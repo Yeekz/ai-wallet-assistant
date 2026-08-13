@@ -1,0 +1,75 @@
+date,description,montant,compte
+2024-11-01,Virement salaire alternance,800.00,compte_courant
+2024-11-03,Carrefour City,-12.50,compte_courant
+2024-11-04,RATP Navigo,-86.40,compte_courant
+2024-11-05,Netflix,-13.99,compte_courant
+2024-11-07,McDo Paris 11,-9.80,compte_courant
+2024-11-08,Franprix,-23.40,compte_courant
+2024-11-10,Virement loyer,-450.00,compte_courant
+2024-11-12,Spotify,-9.99,compte_courant
+2024-11-13,Zara,-54.90,compte_courant
+2024-11-14,Monoprix,-31.20,compte_courant
+2024-11-15,Uber,-14.50,compte_courant
+2024-11-16,Decathlon,-29.90,compte_courant
+2024-11-18,Lidl,-18.75,compte_courant
+2024-11-19,Virement aide parents,200.00,compte_courant
+2024-11-20,Free Mobile,-9.99,compte_courant
+2024-11-21,Amazon,-34.99,compte_courant
+2024-11-22,Boulanger,-89.00,compte_courant
+2024-11-23,KFC,-11.30,compte_courant
+2024-11-25,Auchan,-42.10,compte_courant
+2024-11-26,BlaBlaCar,-18.00,compte_courant
+2024-11-27,H&M,-39.90,compte_courant
+2024-11-28,Remboursement ami Thomas,25.00,compte_courant
+2024-11-29,Intermarché,-27.50,compte_courant
+2024-11-30,Fnac,-49.99,compte_courant
+2024-12-01,Virement salaire alternance,800.00,compte_courant
+2024-12-02,Carrefour Market,-35.60,compte_courant
+2024-12-03,RATP,-3.20,compte_courant
+2024-12-05,Virement loyer,-450.00,compte_courant
+2024-12-06,Burger King,-8.50,compte_courant
+2024-12-08,Amazon Prime,-6.99,compte_courant
+2024-12-09,Monoprix,-19.80,compte_courant
+2024-12-10,Uber Eats,-22.40,compte_courant
+2024-12-12,Spotify,-9.99,compte_courant
+2024-12-13,Netflix,-13.99,compte_courant
+2024-12-14,Aldi,-28.30,compte_courant
+2024-12-15,Remboursement freelance,150.00,compte_courant
+2024-12-16,Sephora,-67.50,compte_courant
+2024-12-17,RATP ticket,-1.90,compte_courant
+2024-12-18,Picard,-24.60,compte_courant
+2024-12-20,Cadeau Noël Amazon,-120.00,compte_courant
+2024-12-21,Fnac,-34.90,compte_courant
+2024-12-22,Lidl,-22.40,compte_courant
+2024-12-23,Uber,-19.80,compte_courant
+2024-12-24,Intermarché repas Noël,-58.90,compte_courant
+2024-12-26,Remboursement famille,80.00,compte_courant
+2024-12-28,Zara soldes,-44.90,compte_courant
+2024-12-29,Cinéma UGC,-12.50,compte_courant
+2024-12-30,Free Mobile,-9.99,compte_courant
+2024-12-31,Virement épargne,-100.00,compte_courant
+2025-01-01,Virement salaire alternance,800.00,compte_courant
+2025-01-02,Franprix,-15.30,compte_courant
+2025-01-03,RATP Navigo,-86.40,compte_courant
+2025-01-04,Virement loyer,-450.00,compte_courant
+2025-01-06,Monoprix,-33.70,compte_courant
+2025-01-07,Free Mobile,-9.99,compte_courant
+2025-01-08,Spotify,-9.99,compte_courant
+2025-01-09,Netflix,-13.99,compte_courant
+2025-01-10,Uber Eats,-18.90,compte_courant
+2025-01-11,Carrefour,-41.20,compte_courant
+2025-01-12,Decathlon,-55.00,compte_courant
+2025-01-14,BlaBlaCar,-22.00,compte_courant
+2025-01-15,Remboursement étudiant,30.00,compte_courant
+2025-01-16,H&M,-29.90,compte_courant
+2025-01-17,Lidl,-19.60,compte_courant
+2025-01-18,Amazon,-44.50,compte_courant
+2025-01-20,Retrait DAB,-60.00,compte_courant
+2025-01-21,Auchan,-38.90,compte_courant
+2025-01-22,Restaurant Le Bistrot,-34.00,compte_courant
+2025-01-23,RATP,-3.20,compte_courant
+2025-01-25,Fnac,-22.90,compte_courant
+2025-01-26,Uber,-11.40,compte_courant
+2025-01-28,Intermarché,-26.80,compte_courant
+2025-01-29,Prime étudiant Amazon,-3.00,compte_courant
+2025-01-30,Virement épargne,-100.00,compte_courant

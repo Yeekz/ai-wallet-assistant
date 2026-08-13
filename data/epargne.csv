@@ -1,0 +1,9 @@
+date,description,montant,compte
+2024-11-01,Solde initial épargne,500.00,epargne
+2024-11-15,Virement depuis courant,100.00,epargne
+2024-11-30,Intérêts livret A,0.83,epargne
+2024-12-31,Virement depuis courant,100.00,epargne
+2024-12-31,Intérêts livret A,1.17,epargne
+2025-01-06,Retrait urgence médecin,-80.00,epargne
+2025-01-30,Virement depuis courant,100.00,epargne
+2025-01-31,Intérêts livret A,1.03,epargne
