@@ -12,6 +12,7 @@ from pathlib import Path
 from typing import Optional
 
 import pandas as pd
+import numpy as np
 
 
 # Colonnes obligatoires dans chaque fichier CSV de compte
@@ -20,31 +21,41 @@ REQUIRED_COLUMNS = {"date", "description", "montant", "compte"}
 
 def _validate_dataframe(df: pd.DataFrame, filepath: str) -> pd.DataFrame:
     """Valide la structure d'un DataFrame chargé depuis un CSV."""
-    missing = REQUIRED_COLUMNS - set(df.columns.str.lower())
+    df = df.copy()
+    df.columns = df.columns.str.lower().str.strip()
+    if df.columns.duplicated().any():
+        raise ValueError(f"Colonnes dupliquées après normalisation dans '{filepath}'.")
+    missing = REQUIRED_COLUMNS - set(df.columns)
     if missing:
         raise ValueError(
             f"Fichier '{filepath}' manque les colonnes : {', '.join(sorted(missing))}. "
             f"Colonnes trouvées : {', '.join(df.columns.tolist())}"
         )
 
-    df.columns = df.columns.str.lower().str.strip()
     df["date"] = pd.to_datetime(df["date"], format="%Y-%m-%d", errors="coerce")
 
     invalid_dates = df["date"].isna().sum()
     if invalid_dates > 0:
         print(f"[AVERTISSEMENT] {invalid_dates} date(s) invalide(s) ignorée(s) dans '{filepath}'.")
-        df = df.dropna(subset=["date"])
+        df = df.dropna(subset=["date"]).copy()
 
     df["montant"] = pd.to_numeric(df["montant"], errors="coerce")
-    invalid_amounts = df["montant"].isna().sum()
+    invalid_amount_mask = ~np.isfinite(df["montant"])
+    invalid_amounts = invalid_amount_mask.sum()
     if invalid_amounts > 0:
         print(
             f"[AVERTISSEMENT] {invalid_amounts} montant(s) invalide(s) ignoré(s) dans '{filepath}'."
         )
-        df = df.dropna(subset=["montant"])
+        df = df.loc[~invalid_amount_mask].copy()
 
-    df["description"] = df["description"].astype(str).str.strip()
-    df["compte"] = df["compte"].astype(str).str.strip()
+    for column in ("description", "compte"):
+        if df[column].isna().any() or df[column].astype(str).str.strip().eq("").any():
+            raise ValueError(f"Champ '{column}' vide dans '{filepath}'.")
+        df[column] = df[column].astype(str).str.strip()
+    if df.empty:
+        raise ValueError(f"Aucune transaction valide dans '{filepath}'.")
+    if df["compte"].eq("TOTAL").any():
+        raise ValueError("Le nom de compte 'TOTAL' est réservé à la consolidation.")
     df["source_file"] = Path(filepath).stem
 
     return df.reset_index(drop=True)

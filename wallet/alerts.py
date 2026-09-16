@@ -12,6 +12,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass, field
 from typing import Optional
+from math import isfinite
 
 import numpy as np
 import pandas as pd
@@ -77,14 +78,15 @@ def _check_budget_limits(
         total = float(by_cat[category])
         if total > limit:
             excess = total - limit
-            pct = (excess / limit) * 100
-            severity = "critical" if pct > 50 else "warning"
+            pct = (excess / limit) * 100 if limit else None
+            severity = "critical" if pct is None or pct > 50 else "warning"
+            percentage = f" / +{pct:.0f}%" if pct is not None else " / budget nul"
             alerts.append(
                 Alert(
                     type="budget_depasse",
                     message=(
                         f"Budget '{category}' dépassé : {total:.2f}€ "
-                        f"(limite {limit:.2f}€, dépassement +{excess:.2f}€ / +{pct:.0f}%)"
+                        f"(limite {limit:.2f}€, dépassement +{excess:.2f}€{percentage})"
                     ),
                     severity=severity,
                     details={
@@ -229,10 +231,18 @@ def check_alerts(
     Returns:
         Liste d'objets Alert, triée par sévérité (critical → warning → info).
     """
+    effective_budget = budget_limits if budget_limits is not None else DEFAULT_BUDGET_LIMITS
+    for category, limit in effective_budget.items():
+        if not isinstance(limit, (int, float)) or not isfinite(limit) or limit < 0:
+            raise ValueError(f"Budget invalide pour '{category}' : nombre fini positif ou nul attendu.")
+    for name, value in (("min_balance", min_balance), ("outlier_zscore", outlier_zscore),
+                        ("divers_threshold", divers_threshold)):
+        if not isinstance(value, (int, float)) or not isfinite(value):
+            raise ValueError(f"{name} doit être un nombre fini.")
+    if outlier_zscore <= 0 or not 0 <= divers_threshold <= 1:
+        raise ValueError("Le z-score doit être positif et le ratio compris entre 0 et 1.")
     if df.empty:
         return []
-
-    effective_budget = budget_limits if budget_limits is not None else DEFAULT_BUDGET_LIMITS
 
     all_alerts: list[Alert] = []
     all_alerts.extend(_check_budget_limits(df, effective_budget))
