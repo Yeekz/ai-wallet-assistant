@@ -97,8 +97,8 @@ Le hors-ligne est garanti avec `python main.py --fallback`. La CLI charge `.env`
 
 ## Démonstration web en lecture seule
 
-**Adresse de déploiement prévue : [ouvrir Wallets](https://wallets.62-171-168-208.nip.io).**
-Cette section documente l’interface préparée localement ; sa présence ne constitue pas une preuve de disponibilité en production.
+**[Ouvrir la démonstration Wallets](https://wallets.62-171-168-208.nip.io).**
+Démo publiée et vérifiée en HTTPS le 18 septembre 2026 : pages, choix du compte et API accessibles. Elle utilise uniquement des données fictives ; aucun usage bancaire réel n’est qualifié.
 
 L’interface française affiche les trois comptes fictifs, les crédits/débits importés, la répartition par catégorie, les alertes et les 12 dernières opérations avec leur règle de catégorisation. Cliquer sur un compte recalcule les indicateurs de cette sélection. Le résumé provient de `wallet.analysis.analyze_spending(..., force_fallback=True)` : **aucun appel à un LLM**, même si des variables de clés existent dans l’environnement du service.
 
